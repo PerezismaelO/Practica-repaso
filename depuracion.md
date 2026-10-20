@@ -21,11 +21,11 @@ Ejemplo de cómo se escribe una variable vista en el panel «Ámbito» (Scope): 
 
 ## Bug 2 · Stock de cada producto
 
-- **Síntoma:** ____
-- **Breakpoint en:** ____
-- **Lo que vi:** ____
-- **Por qué falla:** ____
-- **Arreglo:** ____
+- **Síntoma:** Devuelve `sin datos`en vez de 0
+- **Breakpoint en:** `caja.js:36`
+- **Lo que vi:** Vi que el `producto.stock=0`, sin embargo el `stock="sin datos`
+- **Por qué falla:** El `||`cambia el valor por `sin datos`porque el 0 es falsy.
+- **Arreglo:** Cambiar `||`por `??`.
 
 ## Bug 3 · Ordenar por precio
 
