@@ -13,11 +13,11 @@ Ejemplo de cómo se escribe una variable vista en el panel «Ámbito» (Scope): 
 
 ## Bug 1 · Añadir unidades
 
-- **Síntoma:** ____
-- **Breakpoint en:** ____
-- **Lo que vi:** ____
-- **Por qué falla:** ____
-- **Arreglo:** ____
+- **Síntoma:** Sale 23 en vez de 5 (los concatena, no los suma)
+- **Breakpoint en:** `caja.js:26`
+- **Lo que vi:** He visto tres variables en Scope, dos de ellas valian como números, pero una como texto.
+- **Por qué falla:** Como el valor que se añade va entre comillas, lo reconoce como un texto. Entonces lo que hace el "+" es concatenar en vez de sumar.
+- **Arreglo:** Lo he arreglado convirtiendo en número `textoDelUsuario`.
 
 ## Bug 2 · Stock de cada producto
 
