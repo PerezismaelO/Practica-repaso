@@ -29,11 +29,11 @@ Ejemplo de cómo se escribe una variable vista en el panel «Ámbito» (Scope): 
 
 ## Bug 3 · Ordenar por precio
 
-- **Síntoma:** ____
-- **Breakpoint en:** ____
-- **Lo que vi:** ____
-- **Por qué falla:** ____
-- **Arreglo:** ____
+- **Síntoma:** El catalogo original sale ordenado por precio también.
+- **Breakpoint en:** `caja.js:42`
+- **Lo que vi:** He visto que el array ordenados y el array productos son el mismo.
+- **Por qué falla:** El sort reordena los juegos del array original, no hace una copia.
+- **Arreglo:** He creado una copia del array y la he ordenado.
 
 ## Bug 4 · Descuento por volumen
 

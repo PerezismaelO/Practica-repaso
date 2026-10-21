@@ -39,7 +39,8 @@ export function stockTexto(producto) {
 
 // Devuelve los productos ordenados de más barato a más caro (sin tocar la lista original).
 export function ordenarPorPrecio(productos) {
-  const ordenados = productos.sort((a, b) => a.precio - b.precio);
+  const copiaProductos = [...productos];
+  const ordenados = copiaProductos.sort((a, b) => a.precio - b.precio);
   return ordenados;
 }
 
