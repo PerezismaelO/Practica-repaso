@@ -54,7 +54,14 @@ export function saludar(nombre = "invitado") {
 //    descuentoVolumen(4) → 0.1   descuentoVolumen(10) → 0.1
 //    ⚠️ Fíjate bien en los límites (el 4): es el bug 4 del bloque D.
 export function descuentoVolumen(unidades) {
-  throw new Error("Sin hacer");
+  
+  if (unidades >= 4) {
+    return 0.1;
+  } 
+  if (unidades >= 2) {
+    return 0.05;
+  }
+  return 0;
 }
 
 // ✍️ 2.2 · Precio unitario final = Tabla A y después Tabla B, redondeado.
@@ -64,23 +71,30 @@ export function descuentoVolumen(unidades) {
 //    precioFinal(60, "nuevo-precintado", 4) → 67.5     (caso 2)
 //    precioFinal(20, "solo-cartucho")       → 14
 //    Pista: usa precioConEstado y descuentoVolumen; no repitas las tablas.
-export const precioFinal = function (base, estado, unidades) {
-  throw new Error("Sin hacer");
+export const precioFinal = function (base, estado, unidades = 1) {
+  const conEstado = precioConEstado(base, estado);
+  const descuento = descuentoVolumen(unidades);
+  const precio = conEstado * (1 - descuento);
+  return Math.round(precio * 100) / 100;
 };
 
 // ✍️ 2.3 · ARROW FUNCTION que devuelve un objeto producto. El stock vale 0 si no se pasa.
 //    crearProducto(1, "Tetris", 20, 5) → { id: 1, titulo: "Tetris", precio: 20, stock: 5 }
 //    crearProducto(2, "Sonic", 15)     → { id: 2, titulo: "Sonic", precio: 15, stock: 0 }
 //    ⚠️ Mira la predicción p6: una arrow que devuelve un objeto necesita algo más.
-export const crearProducto = (id, titulo, precio, stock) => {
-  throw new Error("Sin hacer");
-};
+export const crearProducto = (id, titulo, precio, stock = 0) => ({id: id, titulo: titulo, precio: precio, stock: stock});
+
+
 
 // ✍️ 2.4 · Parámetro REST: suma todos los importes que le pases, los que sean.
 //    sumarImportes(10, 20.5, 4) → 34.5      sumarImportes() → 0
 //    Hazlo con for...of (el reduce es del bloque 5). Ahora mismo el parámetro NO es rest: cámbialo.
-export function sumarImportes(importes) {
-  throw new Error("Sin hacer");
+export function sumarImportes(...importes) {
+  let total = 0;
+  for (const importe of importes) {
+    total += importe;
+  }
+  return redondear(total);
 }
 
 // ✍️ 2.5 · HOF: tu propio .find() SIN usar .find(). Mira el ejemplo 2 (contarSi) y haz lo análogo:
@@ -89,5 +103,10 @@ export function sumarImportes(importes) {
 //    buscarCon([1, 2], (n) => n > 5)      → null
 //    buscarCon([{ id: 1 }, { id: 2 }], (p) => p.id === 2) → { id: 2 }
 export function buscarCon(lista, condicion) {
-  throw new Error("Sin hacer");
+  for (const elemento of lista) {
+    if (condicion(elemento)) {
+      return elemento;
+    }
+  }
+  return null;
 }
