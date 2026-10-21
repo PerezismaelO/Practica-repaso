@@ -45,8 +45,8 @@ export const esPar = (n) =>  n % 2 === 0;
 
 // 🪜 2.c · Parámetro POR DEFECTO
 //    saludar("Ana") → "Hola, Ana"       saludar() → "Hola, invitado"
-export function saludar(nombre) {
-  throw new Error("Sin hacer");
+export function saludar(nombre = "invitado") {
+  return `Hola, ${nombre}`;
 }
 
 // ✍️ 2.1 · Tabla B (descuento por volumen) como FUNCIÓN DECLARADA (function nombre() {})
