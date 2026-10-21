@@ -34,14 +34,14 @@ export function contarSi(lista, condicion) {
 // 🪜 2.a · Función DECLARADA:   function triple(n) { ... }
 //    triple(4) → 12      triple(0) → 0
 export function triple(n) {
-  throw new Error("Sin hacer");
+  return n * 3;
+
 }
 
 // 🪜 2.b · ARROW FUNCTION de una línea (sin llaves ni return):   export const esPar = (n) => ...
 //    esPar(4) → true     esPar(7) → false     esPar(0) → true       Pista: el resto de dividir, %
-export const esPar = (n) => {
-  throw new Error("Sin hacer");
-};
+export const esPar = (n) =>  n % 2 === 0;
+
 
 // 🪜 2.c · Parámetro POR DEFECTO
 //    saludar("Ana") → "Hola, Ana"       saludar() → "Hola, invitado"
