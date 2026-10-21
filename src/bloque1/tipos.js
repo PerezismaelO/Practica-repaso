@@ -18,28 +18,39 @@ export function formatearUnidades(unidades) {
 // 🪜 1.a · ¿Es un texto? Usa typeof.
 //    esTexto("3") → true     esTexto(3) → false     esTexto(null) → false
 export function esTexto(valor) {
-  throw new Error("Sin hacer");
+  return typeof valor === "string";
 }
 
 // 🪜 1.b · Sumar dos números que llegan como TEXTO (como los de un prompt)
 //    sumarTextos("3", "4") → 7       (no "34": mira la predicción p1)
 //    sumarTextos("2.5", "1") → 3.5
 export function sumarTextos(a, b) {
-  throw new Error("Sin hacer");
+  const A = Number(a);
+  const B = Number(b);
+  const suma = A + B;
+  return suma;
 }
 
 // 🪜 1.c · Un valor, o uno por defecto si NO viene (null o undefined). El 0 y el "" SÍ son valores.
 //    valorODefecto(0, 10) → 0      valorODefecto(undefined, 10) → 10
 //    valorODefecto(null, "x") → "x"    valorODefecto("", "x") → ""
 export function valorODefecto(valor, defecto) {
-  throw new Error("Sin hacer");
+  if (valor === null || valor === undefined) {
+    return defecto;
+  } else if (valor === "" || valor === 0) {
+    return valor;
+  } else {
+    return valor;
+  }
 }
 
 // ✍️ 1.1 · Formatear un precio en euros, con 2 decimales y coma
 //    formatearEuros(42.75) → "42,75 €"     formatearEuros(5) → "5,00 €"     formatearEuros(0) → "0,00 €"
 //    Pista: toFixed(2) y replace. Mira cómo usa el ejemplo 2 la plantilla `${...}`.
 export function formatearEuros(numero) {
-  throw new Error("Sin hacer");
+  const conDecimales = numero.toFixed(2);
+  const conComa = conDecimales.replace(".", ",");
+  return `${conComa} €`;
 }
 
 // ✍️ 1.2 · Convertir lo que escribe el usuario en un prompt en un número
@@ -48,7 +59,18 @@ export function formatearEuros(numero) {
 //    aNumero("") → null      aNumero("hola") → null      aNumero(null) → null
 //    Pistas: trim(), replace(",", "."), Number() y Number.isNaN(). Mira las predicciones p7 y p8.
 export function aNumero(texto) {
-  throw new Error("Sin hacer");
+  if (texto === null) {
+    return null;
+  }
+  const textoLimpio = texto.trim().replace(",", ".")
+  if (textoLimpio === "") {
+    return null;
+  }
+  const numero = Number(textoLimpio);
+  if (Number.isNaN(numero)) {
+    return null;
+  }
+  return numero;
 }
 
 // ✍️ 1.3 · El stock de un producto, que puede no venir
@@ -58,13 +80,28 @@ export function aNumero(texto) {
 //    stockVisible(undefined)                      → "sin datos"   (el producto no existe)
 //    Pista: ?. y ¿|| o ??? Mira el escalón 1.c y la predicción p10.
 export function stockVisible(producto) {
-  throw new Error("Sin hacer");
+  return producto?.stock ?? "sin datos";
 }
+
+// Opcion2
+//  if (producto === null || producto === undefined) {
+//    return "sin datos";
+//  }
+//  if (producto.stock === null || producto.stock === undefined) {
+//    return "sin datos";
+//  }
+// return producto.stock;
+//}
+
+
 
 // ✍️ 1.4 · Nombre corto de un producto:  "Tetris (GAME BOY)"
 //    Si el título está vacío ("") o no viene → "Sin título (GAME BOY)"
 //    Si no viene la plataforma             → "Tetris (?)"
 //    Aquí un título vacío NO vale como título: ¿qué operador conviene para cada caso? Mira p6.
 export function nombreCorto(producto) {
-  throw new Error("Sin hacer");
+  const titulo = producto.titulo || "Sin título";
+  const plataforma = producto.plataforma ?? "?";
+  return `${titulo} (${plataforma})`;
 }
+
