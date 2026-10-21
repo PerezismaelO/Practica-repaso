@@ -37,8 +37,8 @@ Ejemplo de cómo se escribe una variable vista en el panel «Ámbito» (Scope): 
 
 ## Bug 4 · Descuento por volumen
 
-- **Síntoma:** ____
-- **Breakpoint en:** ____ *(prueba un breakpoint condicional: `unidades === 4`)*
-- **Lo que vi:** ____
-- **Por qué falla:** ____
-- **Arreglo:** ____
+- **Síntoma:** Con 4 unidades sale 23,75 y deberia salir 22,50
+- **Breakpoint en:** `caja.js:50` para que solo se pare con 4 unidades y no con 3.
+- **Lo que vi:** Se para con 4 unidades y pasa directamente al else if, por eso el descuento es 0.05.
+- **Por qué falla:** Falla porque 4 > 4 es falso.
+- **Arreglo:** He añadido en el if, un = (unidades >=4), y he arreglado el else if con un or (||), else if (unidades === 2 || unidades === 3)
