@@ -28,15 +28,24 @@ export function crearMarcador() {
 //    const triplicar = crearMultiplicador(3);
 //    triplicar(4) → 12       crearMultiplicador(10)(5) → 50
 export function crearMultiplicador(factor) {
-  throw new Error("Sin hacer");
+  return (n) => n * factor;  
 }
 
 // 🪜 3.b · Un objeto con DOS funciones que comparten una variable privada que SÍ cambia
 //    const ficha = crearPasos(2);       // avanza de 2 en 2
 //    ficha.avanzar() → 2    ficha.avanzar() → 4    ficha.posicion() → 4
 //    crearPasos().avanzar() → 1         (de 1 en 1 si no se dice nada)
-export function crearPasos(paso) {
-  throw new Error("Sin hacer");
+export function crearPasos(paso = 1) {
+  let actual = 0;
+  return {
+    avanzar() {
+      actual += paso;
+      return actual;
+    },
+    posicion() {
+      return actual;
+    },
+  };
 }
 
 // ✍️ 3.1 · Una función que devuelve una función que calcula un descuento
